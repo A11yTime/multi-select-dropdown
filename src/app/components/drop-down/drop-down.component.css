@@ -1,0 +1,101 @@
+/* Container and dropdown button */
+.dropdown-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;  /* Restrict maximum width of the dropdown */
+  }
+  
+  .dropdown {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .selected-items {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .arrow {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+  }
+  
+  /* Dropdown options */
+  .options-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    max-width: 300px; /* Set a maximum width for the options list */
+    top: 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Options inside the list */
+  .option {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align the content to the left */
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    position: relative;  /* Required for absolute positioning of the checkmark */
+  }
+  
+  /* Space for checkmark without pushing text to the right */
+  .option .checkmark {
+    position: absolute;
+    left: 80px;  /* Adjust space from the left */
+    display: inline-block;
+    font-size: 18px;  /* Size of the checkmark */
+    color: green;  /* Color of the checkmark */
+    margin-left: 80px;  /* Space between checkmark and text */
+  }
+  
+  /* Style the checkmark (adjust this to your liking) */
+  .option span {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  /* Selected state for the option */
+  .selected {
+    background-color: #d3f9d8;
+    color: #005c00;
+  }
+  
+  /* Focus styling for options */
+  .option:focus {
+    outline: 3px solid #0069d9;
+  }
+  
+  /* Highlight dropdown button when focused */
+  .dropdown:focus {
+    outline: 3px solid #0069d9;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0); /* Clip the element from view */
+    clip-path: inset(50%);  /* Alternative for clip method (modern browsers) */
+    overflow: hidden; /* Ensure content doesn't overflow */
+  }
+  

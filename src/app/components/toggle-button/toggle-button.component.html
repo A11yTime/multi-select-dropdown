@@ -1,0 +1,19 @@
+<div class="toggle-container">
+    <!-- Toggle button with aria-expanded to indicate state (expanded or collapsed) -->
+    <button 
+      class="toggle-button" 
+      [attr.aria-expanded]="isExpanded ? 'true' : 'false'"
+      (click)="toggleContent()"
+      aria-controls="toggle-content"
+      id="toggle-button"
+      type="button">
+      <span *ngIf="isExpanded">Collapse Content</span>
+      <span *ngIf="!isExpanded">Expand Content</span>
+    </button>
+  
+    <!-- Content to be toggled (visibility controlled by `isExpanded`) -->
+    <div *ngIf="isExpanded" id="toggle-content" class="toggle-content">
+      <p>This is the content that gets expanded or collapsed based on the button state.</p>
+    </div>
+  </div>
+  

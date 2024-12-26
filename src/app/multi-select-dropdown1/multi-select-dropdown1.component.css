@@ -1,0 +1,89 @@
+/* Container and dropdown button */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;  /* Restrict maximum width of the dropdown */
+}
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.selected-items {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Dropdown options */
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 65px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  max-width: 300px; /* Set a maximum width for the options list */
+  top: 40px;
+  box-sizing: border-box;
+}
+
+/* Options inside the list */
+.option {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* Align the content to the left */
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;  /* Required for absolute positioning of the checkmark */
+}
+
+/* Checkmark icon */
+.option fa-icon {
+  margin-left: 10px;  /* Space between the text and the checkmark */
+  color: green;
+  font-size: 18px; /* Checkmark icon size */
+  visibility: hidden; /* Hide checkmark initially */
+}
+
+/* Show the checkmark only when the option is selected */
+.option.selected fa-icon {
+  visibility: visible;
+}
+
+/* Selected state for the option */
+.option.selected {
+  background-color: #d3f9d8;
+  color: #005c00;
+}
+
+/* Focus styling for options */
+.option:focus {
+  outline: 3px solid #0069d9;
+}
+
+/* Dropdown icon */
+.dropdown fa-icon {
+  font-size: 18px; /* Adjust size of the arrow icon */
+  color: #242323;    /* Color of the dropdown arrow */
+  font-weight: bold;
+}
+
+/* Specific styling for the checkmark icon */
+.checkmark-icon {
+  margin-left: 10px; /* Space between the text and checkmark */
+  color: green; /* Icon color */
+  font-size: 18px; /* Icon size */
+}
+

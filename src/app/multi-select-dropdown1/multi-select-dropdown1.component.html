@@ -1,0 +1,50 @@
+<div class="dropdown-container">
+  <h2 id="multi-select">Choose Options</h2>
+
+  <!-- Dropdown button (clickable) -->
+  <div
+    class="dropdown"
+    (click)="toggleDropdown()"
+    (keydown.enter)="toggleDropdown()"
+    (keydown.space)="toggleDropdown()"
+    [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'"
+    [attr.aria-controls]="'options-list'"
+    role="button"
+    tabindex="0"
+    aria-describedby="multi-select"
+  >
+    <div class="selected-items">
+      <span [ngClass]="{'sr-only': true}">
+        <span *ngIf="isDropdownOpen">Collapse</span>
+        <span *ngIf="!isDropdownOpen">Expand</span>
+      </span>
+      <span *ngIf="selectedOptions.length === 0">Select items...</span>
+      <span *ngFor="let option of selectedOptions; let i = index">
+        {{ option }}<span *ngIf="i < selectedOptions.length - 1">, </span>
+      </span>
+    </div>
+
+    <!-- Dropdown icon using FontAwesome -->
+    <fa-icon [icon]="isDropdownOpen ? faChevronUp : faChevronDown"></fa-icon>
+  </div> <!-- End of dropdown button -->
+
+  <!-- Dropdown options list -->
+  <ul *ngIf="isDropdownOpen" class="options-list" id="options-list" role="listbox">
+    <li
+      *ngFor="let option of options"
+      class="option"
+      [class.selected]="selectedOptions.includes(option)"  
+      role="option"
+      [attr.aria-selected]="selectedOptions.includes(option) ? 'true' : 'false'"
+      (click)="toggleOption(option)"
+      (keydown.enter)="toggleOption(option)"
+      (keydown.space)="toggleOption(option)"
+      tabindex="0"
+    >
+      <!-- Checkmark icon with custom class for styling -->
+      {{ option }}
+      <fa-icon *ngIf="selectedOptions.includes(option)" [icon]="faCheck" class="checkmark-icon"></fa-icon>
+    </li>
+  </ul>
+  
+</div>

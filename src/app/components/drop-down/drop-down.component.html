@@ -1,0 +1,53 @@
+<div class="dropdown-container">
+  <h2 id="multi-select">Choose Options</h2> 
+
+  <!-- Dropdown button (clickable) -->
+  <div
+    class="dropdown"
+    (click)="toggleDropdown()"
+    (keydown.enter)="toggleDropdown()"
+    (keydown.space)="toggleDropdown()"
+    [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'"
+    [attr.aria-controls]="'options-list'"
+    role="button"
+    tabindex="0"
+  >
+    <div class="selected-items">
+      <span *ngIf="selectedOptions.length === 0">Select items...</span>
+      <span *ngFor="let option of selectedOptions; let i = index">
+        {{ option }}<span *ngIf="i < selectedOptions.length - 1">, </span>
+      </span>
+    </div>
+    <div class="arrow"></div>
+  </div>
+  <div role="status" aria-live="polite" class="sr-only">
+    <span>{{ isDropdownOpen ? 'drop down expanded' : 'drop down collapsed' }}</span>
+  </div>
+  
+  <!-- Dropdown options list -->
+  <ul
+    *ngIf="isDropdownOpen"
+    class="options-list"
+    id="options-list"
+    role="listbox"
+    aria-labelledby="multi-select"
+  >
+    <li
+      *ngFor="let option of options; let i = index"
+      class="option"
+      role="option"
+      [attr.aria-selected]="selectedOptions.includes(option) ? 'true' : 'false'"
+      (click)="toggleOption(option)"
+      (keydown.enter)="toggleOption(option)"
+      (keydown.space)="toggleOption(option)"
+      tabindex="0"
+      [ngClass]="{ 'selected': selectedOptions.includes(option) }"
+      #optionElement
+      (keydown.arrowdown)="moveFocus('down', i)"
+      (keydown.arrowup)="moveFocus('up', i)"
+    >
+      <span *ngIf="selectedOptions.includes(option)" class="checkmark">&#10003;</span>
+      {{ option }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,46 @@
+<div class="dropdown-container">
+    <label for="multi-select">Choose Options</label>
+  
+    <!-- Dropdown button (clickable) -->
+    <div
+      class="dropdown"
+      (click)="toggleDropdown()"
+      (keydown.enter)="toggleDropdown()"
+      (keydown.space)="toggleDropdown()"
+      [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'"
+      [attr.aria-controls]="'options-list'"
+      role="button"
+      tabindex="0"
+    >
+      <div class="selected-items">
+        <span *ngIf="selectedOptions.length === 0">Select items...</span>
+        <span *ngFor="let option of selectedOptions; let i = index">
+          {{ option }}<span *ngIf="i < selectedOptions.length - 1">, </span>
+        </span>
+      </div>
+      <div class="arrow"></div>
+    </div>
+  
+    <!-- Dropdown options list -->
+    <ul
+      *ngIf="isDropdownOpen"
+      class="options-list"
+      id="options-list"
+      role="listbox"
+      aria-labelledby="multi-select"
+    >
+      <li
+        *ngFor="let option of options"
+        class="option"
+        [ngClass]="{ 'selected': selectedOptions.includes(option) }"  
+        role="option"
+        (click)="toggleOption(option)"
+        (keydown.enter)="toggleOption(option)"
+        (keydown.space)="toggleOption(option)"
+        tabindex="0"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+  
