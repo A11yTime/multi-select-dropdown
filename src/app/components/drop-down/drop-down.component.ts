@@ -19,7 +19,18 @@ export class DropDownComponent {
   // Toggle dropdown visibility
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  
+    if (this.isDropdownOpen && this.options.length > 0) {
+      setTimeout(() => {
+        // Focus the first option when dropdown opens
+        const firstOption = this.optionElements.get(0);
+        if (firstOption) {
+          firstOption.nativeElement.focus();
+        }
+      });
+    }
   }
+  
 
   // Toggle selection of an option
   toggleOption(option: string) {

@@ -20,7 +20,8 @@
       </span>
       <span *ngIf="selectedOptions.length === 0">Select items...</span>
       <span *ngFor="let option of selectedOptions; let i = index">
-        {{ option }}<span *ngIf="i < selectedOptions.length - 1">, </span>
+        {{ option }}
+        <span *ngIf="i < selectedOptions.length - 1">, </span>
       </span>
     </div>
 
