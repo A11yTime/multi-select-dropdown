@@ -1,0 +1,47 @@
+.dropdown-container {
+    position: relative;
+    width: 250px;
+    margin: 20px;
+  }
+  
+  .dropdown {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  .options-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  
+  .option {
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  
+  .option.selected {
+    background-color: #d0f0d0;
+    font-weight: bold;
+  }
+  
+  .option:focus {
+    outline: 2px solid #007bff;
+  }
+  
+  .checkmark {
+    color: green;
+    margin-right: 8px;
+  }
+  
+  .sr-only {
+    position: absolute;
+    left: -9999px;
+  }
+  

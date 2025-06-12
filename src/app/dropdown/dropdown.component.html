@@ -1,0 +1,49 @@
+<div class="dropdown-container">
+    <h2 id="single-select">Choose Option</h2>
+  
+    <div
+      class="dropdown"
+      #dropdownTrigger
+      (click)="toggleDropdown()"
+      (keydown.enter)="toggleDropdown()"
+      (keydown.space)="toggleDropdown()"
+      [attr.aria-expanded]="isDropdownOpen"
+      [attr.aria-controls]="'options-list'"
+      role="button"
+      tabindex="0"
+    >
+      <div class="selected-items">
+        <span *ngIf="!selectedOption">Select an option...</span>
+        <span *ngIf="selectedOption">{{ selectedOption }}</span>
+      </div>
+      <div class="arrow"></div>
+    </div>
+  
+    <div role="status" aria-live="polite" class="sr-only">
+      <span>{{ isDropdownOpen ? 'dropdown expanded' : 'dropdown collapsed' }}</span>
+    </div>
+  
+    <ul
+      *ngIf="isDropdownOpen"
+      class="options-list"
+      id="options-list"
+      role="listbox"
+      aria-labelledby="single-select"
+    >
+      <li
+        *ngFor="let option of options; let i = index"
+        class="option"
+        role="option"
+        [attr.aria-selected]="selectedOption === option"
+        (click)="selectOption(option)"
+        [tabindex]="i === focusedIndex ? 0 : -1"
+        [ngClass]="{ 'selected': selectedOption === option }"
+        #optionElement
+        (keydown)="handleKey($event, i, option)"
+      >
+        <span *ngIf="selectedOption === option" class="checkmark">&#10003;</span>
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+  
